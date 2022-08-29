@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
   @override
   State<MainPage> createState() => _MainPageState();
 }
@@ -104,8 +106,10 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 37, top: 40, right: 37),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 22,
+                      vertical: 40,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -131,8 +135,9 @@ class _MainPageState extends State<MainPage> {
                           height: screenHeight * 0.06,
                           width: screenWidth * 0.12,
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15)),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                           child: const Center(
                             child: Icon(
                               Icons.mic_rounded,
@@ -146,10 +151,14 @@ class _MainPageState extends State<MainPage> {
                 ],
               ),
             ),
-            TopCollege(),
-            TopCollege(),
-            TopCollege(),
-            TopCollege(),
+            tiles(context, "TITLE", "assets/images/Rectangle 141.png",
+                "BODY " * 10),
+            tiles(context, "TITLE", "assets/images/Rectangle 142.png",
+                "LOREM IPSUM DOLOR SIT AMET" * 5),
+            tiles(context, "TITLE", "assets/images/Rectangle 143.png",
+                "STRING " * 10),
+            tiles(context, "TITLE", "assets/images/Rectangle 141.png",
+                "NEW BODY " * 10),
           ],
         ),
       ),
@@ -157,177 +166,173 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class TopCollege extends StatefulWidget {
-  const TopCollege({Key? key}) : super(key: key);
+SizedBox tiles(
+    BuildContext context, String title, String imageLoc, String body) {
+  double screenWidth = MediaQuery.of(context).size.width;
+  double screenHeight = MediaQuery.of(context).size.height;
 
-  @override
-  State<TopCollege> createState() => _TopCollegeState();
-}
-
-class _TopCollegeState extends State<TopCollege> {
-  @override
-  Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      height: screenHeight * 0.183,
-      width: screenWidth * 0.83,
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: InkWell(
-          onTap: () => showModalBottomSheet(
-              context: context,
-              builder: (context) => buildSheet(),
-              shape: const RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(30)))),
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Ink.image(
-                    image: const AssetImage('assets/images/Rectangle 141.png'),
-                    height: screenHeight * 0.1742,
-                    width: screenWidth * 0.83,
-                  ),
-                  Positioned(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Top Colleges',
-                            style: GoogleFonts.lato(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            'Search through thousands of accredited colleges and universities online to find'
-                            ' the right one for you.  Apply in 3 min, and connect with your future.',
-                            style: GoogleFonts.lato(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+  return SizedBox(
+    height: screenHeight * 0.18397,
+    width: screenWidth * 0.83,
+    child: Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: InkWell(
+        onTap: () => showModalBottomSheet(
+          context: context,
+          builder: (context) => buildSheet(context),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(30),
+            ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget buildSheet() => Container(
-        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.clear),
+            Stack(
+              children: [
+                Ink.image(
+                  image: AssetImage(imageLoc),
+                  height: screenHeight * 0.1742,
+                  width: screenWidth * 0.83,
+                ),
+                Positioned(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: GoogleFonts.lato(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white),
+                        ),
+                        Text(
+                          body,
+                          style: GoogleFonts.lato(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
-                  hintText: "Sort by"),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const secondPage(),
-                    ));
-              },
-              leading: const Icon(
-                Icons.school_sharp,
-                size: 28,
-              ),
-              title: Text(
-                'Bachelor of Technology',
-                style:
-                    GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const secondPage(),
-                    ));
-              },
-              leading: const Icon(
-                Icons.architecture_outlined,
-                size: 28,
-              ),
-              title: Text(
-                'Bachelor of Architecture',
-                style:
-                    GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const secondPage(),
-                    ));
-              },
-              leading: const Icon(
-                Icons.local_pharmacy_outlined,
-                size: 28,
-              ),
-              title: Text(
-                'Pharmacy',
-                style:
-                    GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const secondPage(),
-                    ));
-              },
-              leading: const Icon(
-                Icons.balance,
-                size: 28,
-              ),
-              title: Text(
-                'Law',
-                style:
-                    GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const secondPage(),
-                    ));
-              },
-              leading: const Icon(
-                Icons.manage_accounts_outlined,
-                size: 28,
-              ),
-              title: Text(
-                'Management',
-                style:
-                    GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
-              ),
+                ),
+              ],
             ),
           ],
         ),
-      );
+      ),
+    ),
+  );
 }
+
+Widget buildSheet(BuildContext context) => Container(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.clear),
+                ),
+                hintText: "Sort by"),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const secondPage(),
+                  ));
+            },
+            leading: const Icon(
+              Icons.school_sharp,
+              size: 28,
+            ),
+            title: Text(
+              'Bachelor of Technology',
+              style:
+                  GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const secondPage(),
+                  ));
+            },
+            leading: const Icon(
+              Icons.architecture_outlined,
+              size: 28,
+            ),
+            title: Text(
+              'Bachelor of Architecture',
+              style:
+                  GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const secondPage(),
+                  ));
+            },
+            leading: const Icon(
+              Icons.local_pharmacy_outlined,
+              size: 28,
+            ),
+            title: Text(
+              'Pharmacy',
+              style:
+                  GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const secondPage(),
+                  ));
+            },
+            leading: const Icon(
+              Icons.balance,
+              size: 28,
+            ),
+            title: Text(
+              'Law',
+              style:
+                  GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const secondPage(),
+                  ));
+            },
+            leading: const Icon(
+              Icons.manage_accounts_outlined,
+              size: 28,
+            ),
+            title: Text(
+              'Management',
+              style:
+                  GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+          ),
+        ],
+      ),
+    );
