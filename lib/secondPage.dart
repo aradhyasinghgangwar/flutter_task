@@ -111,16 +111,16 @@ class _secondPageState extends State<secondPage> {
               ),
             ),
             const BigCards(),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const thirdPage(),
-                    ),
-                  );
-                },
-                child: const Text("second page"))
+            // ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => const thirdPage(),
+            //         ),
+            //       );
+            //     },
+            //     child: const Text("second page"))
           ],
         ),
       ),
@@ -175,13 +175,20 @@ class _BigCardsState extends State<BigCards> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const thirdPage(),
+                ),
+              );
+            },
             child: Column(
               children: [
                 Stack(
                   children: [
                     Image.asset(
-                      "assets/images/unsplash_1iuxWsIZ6ko.png",
+                      "assets/images/unsplash_Ucr4Yp-t364.png",
                       width: double.infinity,
                       fit: BoxFit.fill,
                     ),

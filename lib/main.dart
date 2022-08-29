@@ -110,8 +110,8 @@ class _MainPageState extends State<MainPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 53,
-                          width: 260,
+                          height: screenHeight * 0.06,
+                          width: screenWidth * 0.7,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
@@ -128,8 +128,8 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ),
                         Container(
-                          height: 53,
-                          width: 50,
+                          height: screenHeight * 0.06,
+                          width: screenWidth * 0.12,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
@@ -139,78 +139,86 @@ class _MainPageState extends State<MainPage> {
                               color: Color(0xFF0E3C6E),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   )
                 ],
               ),
             ),
-            SizedBox(
-              height: screenHeight * 0.183,
-              width: screenWidth * 0.83,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                child: InkWell(
-                  onTap: () => showModalBottomSheet(
-                      context: context,
-                      builder: (context) => buildSheet(),
-                      shape: const RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(30)))),
-                  child: Column(
-                    children: [
-                      Stack(
+            TopCollege(),
+            TopCollege(),
+            TopCollege(),
+            TopCollege(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TopCollege extends StatefulWidget {
+  const TopCollege({Key? key}) : super(key: key);
+
+  @override
+  State<TopCollege> createState() => _TopCollegeState();
+}
+
+class _TopCollegeState extends State<TopCollege> {
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    return Container(
+      height: screenHeight * 0.183,
+      width: screenWidth * 0.83,
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: InkWell(
+          onTap: () => showModalBottomSheet(
+              context: context,
+              builder: (context) => buildSheet(),
+              shape: const RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(30)))),
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Ink.image(
+                    image: const AssetImage('assets/images/Rectangle 141.png'),
+                    height: screenHeight * 0.1742,
+                    width: screenWidth * 0.83,
+                  ),
+                  Positioned(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Ink.image(
-                            image:
-                                const AssetImage('assets/images/Rectangle 141.png'),
-                            height: screenHeight * 0.1742,
-                            width: screenWidth * 0.83,
+                          Text(
+                            'Top Colleges',
+                            style: GoogleFonts.lato(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white),
                           ),
-                          Positioned(
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Top Colleges',
-                                    style: GoogleFonts.lato(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w800,
-                                        color: Colors.white),
-                                  ),
-                                  Text(
-                                    'Search through thousands of accredited colleges and universities online to find'
-                                    ' the right one for you.  Apply in 3 min, and connect with your future.',
-                                    style: GoogleFonts.lato(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          Text(
+                            'Search through thousands of accredited colleges and universities online to find'
+                            ' the right one for you.  Apply in 3 min, and connect with your future.',
+                            style: GoogleFonts.lato(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ),
-            // ElevatedButton(
-            //     onPressed: () {
-            //       Navigator.push(
-            //           context,
-            //           MaterialPageRoute(
-            //             builder: (context) => secondPage(),
-            //           ));
-            //     },
-            //     child: Text("second page"))
-          ],
+            ],
+          ),
         ),
       ),
     );
