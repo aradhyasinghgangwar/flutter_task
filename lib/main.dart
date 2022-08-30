@@ -62,7 +62,7 @@ class _MainPageState extends State<MainPage> {
         child: Column(
           children: [
             Container(
-              height: screenHeight * 0.33,
+              height: 250,
               width: screenWidth,
               decoration: const BoxDecoration(
                 color: Color(0xFF0E3C6E),
@@ -74,7 +74,7 @@ class _MainPageState extends State<MainPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 37, top: 50, right: 37, bottom: 10),
+                        left: 30, top: 50, right: 30, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -95,7 +95,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 37),
+                    padding: const EdgeInsets.only(left: 30),
                     child: Text(
                       "Search in 600 hundred colleges around!",
                       style: GoogleFonts.lato(
@@ -107,7 +107,7 @@ class _MainPageState extends State<MainPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 22,
+                      horizontal: 30,
                       vertical: 40,
                     ),
                     child: Row(
@@ -115,7 +115,7 @@ class _MainPageState extends State<MainPage> {
                       children: [
                         Container(
                           height: 61,
-                          width: 290,
+                          width: 270,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
@@ -209,7 +209,7 @@ Padding tiles(
                   Ink.image(
                     image: AssetImage(imageLoc),
                     height: 122,
-                    width: 299,
+                    width: 290,
                     fit: BoxFit.fitWidth,
                   ),
                   Positioned(

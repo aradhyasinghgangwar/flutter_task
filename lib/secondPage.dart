@@ -44,7 +44,7 @@ class _secondPageState extends State<secondPage> {
         child: Column(
           children: [
             Container(
-              height: screenHeight * 0.20,
+              height: 170,
               width: screenWidth,
               decoration: const BoxDecoration(
                 color: Color(0xFF0E3C6E),
@@ -62,7 +62,7 @@ class _secondPageState extends State<secondPage> {
                       children: [
                         Container(
                           height: 61,
-                          width: 290,
+                          width: 270,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
@@ -136,16 +136,6 @@ class _secondPageState extends State<secondPage> {
                 ],
               ),
             ),
-            // ElevatedButton(
-            //     onPressed: () {
-            //       Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => const thirdPage(),
-            //         ),
-            //       );
-            //     },
-            //     child: const Text("second page"))
           ],
         ),
       ),
@@ -236,7 +226,7 @@ Padding bigCards(BuildContext context, String imgloc, String college,
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: SizedBox(
                         height: 60,
                         width: 220,
