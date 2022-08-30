@@ -61,8 +61,8 @@ class _secondPageState extends State<secondPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 53,
-                          width: 260,
+                          height: 61,
+                          width: 290,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
@@ -71,25 +71,30 @@ class _secondPageState extends State<secondPage> {
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(Icons.search),
                                   suffixIcon: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.clear)),
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.clear),
+                                  ),
                                   hintText: "Search college...."),
                             ),
                           ),
                         ),
                         Container(
-                          height: 53,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: const Center(
-                            child: Icon(
-                              Icons.mic_rounded,
-                              color: Color(0xFF0E3C6E),
+                          height: 61,
+                          width: 61,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: const Color(0xFFFFFFFF),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20))),
+                            onPressed: () {},
+                            child: const Center(
+                              child: Icon(
+                                Icons.mic_rounded,
+                                color: Color(0xFF0E3C6E),
+                              ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   )
@@ -110,7 +115,24 @@ class _secondPageState extends State<secondPage> {
                 ),
               ),
             ),
-            const BigCards(),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  bigCards(
+                      context,
+                      "assets/images/unsplash_Ucr4Yp-t364.png",
+                      "GHJK Engineering college",
+                      "More than 1000+ students have been placed",
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu ut imperdiet sed nec ullamcorper."),
+                  bigCards(
+                      context,
+                      "assets/images/unsplash_1iuxWsIZ6ko.png",
+                      "Bachelor of Technology",
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing ",
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu ut imperdiet sed nec ullamcorper."),
+                ],
+              ),
+            ),
             // ElevatedButton(
             //     onPressed: () {
             //       Navigator.push(
@@ -153,157 +175,193 @@ class SmallCards extends StatelessWidget {
   }
 }
 
-class BigCards extends StatefulWidget {
-  const BigCards({Key? key}) : super(key: key);
-
-  @override
-  State<BigCards> createState() => _BigCardsState();
-}
-
-class _BigCardsState extends State<BigCards> {
-  @override
-  Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
-      child: SizedBox(
-        height: screenHeight * 0.30,
-        width: screenWidth * 0.9,
-        child: Card(
-          elevation: 20,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const thirdPage(),
-                ),
-              );
-            },
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    Image.asset(
-                      "assets/images/unsplash_Ucr4Yp-t364.png",
-                      width: double.infinity,
-                      fit: BoxFit.fill,
-                    ),
-                    Positioned(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            CircleAvatar(
-                              backgroundColor: Colors.white,
-                              child: Icon(
-                                Icons.share_outlined,
-                                color: Colors.black,
-                              ),
-                            ),
-                            CircleAvatar(
-                              backgroundColor: Colors.white,
-                              child: Icon(
-                                Icons.bookmark_border_outlined,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
+Padding bigCards(BuildContext context, String imgloc, String college,
+    String short, String body) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+    child: SizedBox(
+      height: 280,
+      child: Card(
+        elevation: 20,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const thirdPage(),
+              ),
+            );
+          },
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+                    imgloc,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
+                  Positioned(
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        height: 60,
-                        width: 220,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'GHJK Engineering College',
-                              style: GoogleFonts.lato(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          CircleAvatar(
+                            backgroundColor: Colors.white,
+                            child: Icon(
+                              Icons.share_outlined,
+                              color: Colors.black,
                             ),
-                            const SizedBox(height: 4),
-                            Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-                              ' Eu ut imperdiet sed nec ullamcorper.',
-                              style: GoogleFonts.lato(
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF8E8E8E)),
-                            )
-                          ],
-                        ),
+                          ),
+                          CircleAvatar(
+                            backgroundColor: Colors.white,
+                            child: Icon(
+                              Icons.bookmark_border_outlined,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
                       ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 60,
+                      width: 220,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            college,
+                            style: GoogleFonts.lato(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            body,
+                            style: GoogleFonts.lato(
+                                fontSize: 9,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFF8E8E8E)),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  SizedBox(
+                    height: 60,
+                    width: 110,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          height: 20,
+                          width: 50,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6.0),
+                              color: const Color(0xFF27C200)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 8, top: 2, bottom: 2, right: 4),
+                            child: Row(
+                              children: [
+                                Text(
+                                  '4.3',
+                                  style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 13,
+                                      color: Colors.white),
+                                ),
+                                const Icon(
+                                  Icons.star,
+                                  color: Colors.white,
+                                  size: 14,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 22,
+                          width: 88,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6.0),
+                              color: const Color(0xFF0E3C6E)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 8, top: 2, bottom: 2, right: 4),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Apply Now',
+                                  style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 13,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              const Divider(
+                thickness: 1,
+                height: 2,
+                color: Colors.black45,
+                indent: 20,
+                endIndent: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 5),
+                child: Row(
+                  children: [
+                    Image.asset('assets/images/Vector.png'),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      short,
+                      style: GoogleFonts.lato(
+                          fontSize: 9,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF8E8E8E)),
                     ),
                     const SizedBox(
                       width: 20,
                     ),
                     SizedBox(
-                      height: 60,
-                      width: 110,
-                      child: Column(
+                      height: 20,
+                      width: 50,
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
-                            height: 20,
-                            width: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6.0),
-                                color: const Color(0xFF27C200)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 8, top: 2, bottom: 2, right: 4),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '4.3',
-                                    style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w800,
-                                        fontSize: 13,
-                                        color: Colors.white),
-                                  ),
-                                  const Icon(
-                                    Icons.star,
-                                    color: Colors.white,
-                                    size: 14,
-                                  ),
-                                ],
-                              ),
-                            ),
+                          const Icon(
+                            Icons.remove_red_eye_outlined,
+                            color: Color(0xFFA9A9A9),
+                            size: 18,
                           ),
-                          Container(
-                            height: 22,
-                            width: 88,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6.0),
-                                color: const Color(0xFF0E3C6E)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 8, top: 2, bottom: 2, right: 4),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    'Apply Now',
-                                    style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w800,
-                                        fontSize: 13,
-                                        color: Colors.white),
-                                  ),
-                                ],
-                              ),
+                          Text(
+                            '468+',
+                            style: GoogleFonts.lato(
+                              fontSize: 9,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFFA9A9A9),
                             ),
                           )
                         ],
@@ -311,61 +369,11 @@ class _BigCardsState extends State<BigCards> {
                     )
                   ],
                 ),
-                const Divider(
-                  thickness: 1,
-                  height: 2,
-                  color: Colors.black45,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 5),
-                  child: Row(
-                    children: [
-                      Image.asset('assets/images/Vector.png'),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing ',
-                        style: GoogleFonts.lato(
-                            fontSize: 9,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF8E8E8E)),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      SizedBox(
-                        height: 20,
-                        width: 50,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Icon(
-                              Icons.remove_red_eye_outlined,
-                              color: Color(0xFFA9A9A9),
-                              size: 18,
-                            ),
-                            Text(
-                              '468+',
-                              style: GoogleFonts.lato(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xFFA9A9A9),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }

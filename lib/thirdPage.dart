@@ -1,8 +1,7 @@
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_navigation/scroll_navigation.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class thirdPage extends StatefulWidget {
   const thirdPage({Key? key}) : super(key: key);
@@ -14,6 +13,13 @@ class thirdPage extends StatefulWidget {
 class _thirdPageState extends State<thirdPage> {
   bool isFabVisible = true;
 
+  List<String> imagedata = [
+    'assets/images/unsplash_T1Yvmf4oleQ.png',
+    'assets/images/unsplash_WQJvWU_HZFo.png',
+    'assets/images/unsplash_T1Yvmf4oleQ.png',
+    'assets/images/unsplash_WQJvWU_HZFo.png'
+  ];
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -24,7 +30,7 @@ class _thirdPageState extends State<thirdPage> {
         child: FloatingActionButton.extended(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          backgroundColor: Color(0xFF0E3C6E),
+          backgroundColor: const Color(0xFF0E3C6E),
           label: Text(
             'Apply Now',
             style: GoogleFonts.lato(fontWeight: FontWeight.w700, fontSize: 20),
@@ -108,7 +114,7 @@ class _thirdPageState extends State<thirdPage> {
                 barStyle: const TitleNavigationBarStyle(
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 20,
+                        fontSize: 16,
                         color: Colors.black),
                     padding:
                         EdgeInsets.symmetric(horizontal: 50.0, vertical: 10.0),
@@ -154,22 +160,49 @@ class _thirdPageState extends State<thirdPage> {
                             style: GoogleFonts.lato(
                                 fontSize: 16, fontWeight: FontWeight.w700),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(
-                                  'assets/images/unsplash_71NgiXcdTzE.png'),
-                              Image.asset(
-                                  'assets/images/unsplash_Q76DPRQ3Ix0.png'),
-                              Image.asset(
-                                  'assets/images/unsplash_wRdYnqXtyYk.png'),
-                              Image.asset(
-                                  'assets/images/unsplash_ijhzqAm3N1Y.png'),
-                              Image.asset(
-                                  'assets/images/unsplash_Q76DPRQ3Ix0.png'),
-                              Image.asset(
-                                  'assets/images/unsplash_71NgiXcdTzE.png'),
-                            ],
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                    'assets/images/unsplash_71NgiXcdTzE.png'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                    'assets/images/unsplash_Q76DPRQ3Ix0.png'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                    'assets/images/unsplash_wRdYnqXtyYk.png'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                    'assets/images/unsplash_ijhzqAm3N1Y.png'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                    'assets/images/unsplash_Q76DPRQ3Ix0.png'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                    'assets/images/unsplash_71NgiXcdTzE.png'),
+                                Image.asset(
+                                    'assets/images/unsplash_Q76DPRQ3Ix0.png'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                    'assets/images/unsplash_Q76DPRQ3Ix0.png'),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            ),
                           ),
                           Center(
                             child: SizedBox(
@@ -234,7 +267,7 @@ class _thirdPageState extends State<thirdPage> {
                     ),
                   ),
                   Container(
-                    color: Colors.black12,
+                    color: Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 20, right: 20, top: 20, bottom: 40),
@@ -286,16 +319,34 @@ class _thirdPageState extends State<thirdPage> {
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                  'assets/images/unsplash_T1Yvmf4oleQ.png'),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Image.asset(
-                                  'assets/images/unsplash_WQJvWU_HZFo.png')
-                            ],
+                          CarouselSlider(
+                            options: CarouselOptions(
+                              height: 200,
+                              // aspectRatio: 16 / 9,
+                              // viewportFraction: 0.8,
+                              initialPage: 0,
+                              enableInfiniteScroll: true,
+                              reverse: true,
+                              autoPlay: true,
+                              autoPlayInterval: const Duration(seconds: 10),
+                              autoPlayAnimationDuration:
+                                  const Duration(milliseconds: 200),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
+                              // onPageChanged: callbackFunction,
+                              scrollDirection: Axis.horizontal,
+                            ),
+                            items: [0, 1, 2, 3].map((i) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                    child: Image.asset(imagedata[i]),
+                                  );
+                                },
+                              );
+                            }).toList(),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

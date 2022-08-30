@@ -114,8 +114,8 @@ class _MainPageState extends State<MainPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: screenHeight * 0.06,
-                          width: screenWidth * 0.7,
+                          height: 61,
+                          width: 290,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15)),
@@ -132,16 +132,19 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ),
                         Container(
-                          height: screenHeight * 0.06,
-                          width: screenWidth * 0.12,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: const Center(
-                            child: Icon(
-                              Icons.mic_rounded,
-                              color: Color(0xFF0E3C6E),
+                          height: 61,
+                          width: 61,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: const Color(0xFFFFFFFF),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20))),
+                            onPressed: () {},
+                            child: const Center(
+                              child: Icon(
+                                Icons.mic_rounded,
+                                color: Color(0xFF0E3C6E),
+                              ),
                             ),
                           ),
                         ),
@@ -151,14 +154,20 @@ class _MainPageState extends State<MainPage> {
                 ],
               ),
             ),
-            tiles(context, "TITLE", "assets/images/Rectangle 141.png",
-                "BODY " * 10),
-            tiles(context, "TITLE", "assets/images/Rectangle 142.png",
-                "LOREM IPSUM DOLOR SIT AMET" * 5),
-            tiles(context, "TITLE", "assets/images/Rectangle 143.png",
-                "STRING " * 10),
-            tiles(context, "TITLE", "assets/images/Rectangle 141.png",
-                "NEW BODY " * 10),
+            tiles(
+                context,
+                "Top Colleges",
+                "assets/images/Rectangle 141.png",
+                "Search through thousands of accredited colleges and universities online to find the right one for you. "
+                    " Apply in 3 min, and connect with your future."),
+            tiles(
+                context,
+                "Top Schools",
+                "assets/images/Rectangle 142.png",
+                "Searching for the best school for you just got easier! With our Advanced School Search,"
+                    " you can easily filter out the schools that are fit for you."),
+            tiles(context, "Exams", "assets/images/Rectangle 143.png",
+                "Find an end to end information about the exams that are happening in India"),
           ],
         ),
       ),
@@ -166,64 +175,68 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-SizedBox tiles(
+Padding tiles(
     BuildContext context, String title, String imageLoc, String body) {
-  double screenWidth = MediaQuery.of(context).size.width;
-  double screenHeight = MediaQuery.of(context).size.height;
+  // double screenWidth = MediaQuery.of(context).size.width;
+  // double screenHeight = MediaQuery.of(context).size.height;
 
-  return SizedBox(
-    height: screenHeight * 0.18397,
-    width: screenWidth * 0.83,
-    child: Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: InkWell(
-        onTap: () => showModalBottomSheet(
-          context: context,
-          builder: (context) => buildSheet(context),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(30),
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 15),
+    child: SizedBox(
+      height: 130,
+      width: 300,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: InkWell(
+          onTap: () => showModalBottomSheet(
+            context: context,
+            builder: (context) => buildSheet(context),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(30),
+              ),
             ),
           ),
-        ),
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Ink.image(
-                  image: AssetImage(imageLoc),
-                  height: screenHeight * 0.1742,
-                  width: screenWidth * 0.83,
-                ),
-                Positioned(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: GoogleFonts.lato(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.white),
-                        ),
-                        Text(
-                          body,
-                          style: GoogleFonts.lato(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white),
-                        ),
-                      ],
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Ink.image(
+                    image: AssetImage(imageLoc),
+                    height: 122,
+                    width: 299,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  Positioned(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: GoogleFonts.lato(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white),
+                          ),
+                          Text(
+                            body,
+                            style: GoogleFonts.lato(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     ),
