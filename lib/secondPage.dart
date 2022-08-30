@@ -56,7 +56,7 @@ class _secondPageState extends State<secondPage> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 37, top: 56, right: 37),
+                        const EdgeInsets.only(left: 30, top: 56, right: 30),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -77,6 +77,9 @@ class _secondPageState extends State<secondPage> {
                                   hintText: "Search college...."),
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          width: 10,
                         ),
                         Container(
                           height: 61,
@@ -228,97 +231,100 @@ Padding bigCards(BuildContext context, String imgloc, String college,
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        height: 60,
+                        width: 220,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              college,
+                              style: GoogleFonts.lato(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              body,
+                              style: GoogleFonts.lato(
+                                  fontSize: 9,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xFF8E8E8E)),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    SizedBox(
                       height: 60,
-                      width: 220,
+                      width: 110,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(
-                            college,
-                            style: GoogleFonts.lato(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black),
+                          Container(
+                            height: 20,
+                            width: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6.0),
+                                color: const Color(0xFF27C200)),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8, top: 2, bottom: 2, right: 4),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    '4.3',
+                                    style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 13,
+                                        color: Colors.white),
+                                  ),
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.white,
+                                    size: 14,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          const SizedBox(height: 4),
-                          Text(
-                            body,
-                            style: GoogleFonts.lato(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xFF8E8E8E)),
+                          Container(
+                            height: 22,
+                            width: 88,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6.0),
+                                color: const Color(0xFF0E3C6E)),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8, top: 2, bottom: 2, right: 4),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Apply Now',
+                                    style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 13,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ),
                           )
                         ],
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  SizedBox(
-                    height: 60,
-                    width: 110,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: 20,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: const Color(0xFF27C200)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 2, bottom: 2, right: 4),
-                            child: Row(
-                              children: [
-                                Text(
-                                  '4.3',
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 13,
-                                      color: Colors.white),
-                                ),
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.white,
-                                  size: 14,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 22,
-                          width: 88,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: const Color(0xFF0E3C6E)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 2, bottom: 2, right: 4),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Apply Now',
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 13,
-                                      color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
               const Divider(
                 thickness: 1,
