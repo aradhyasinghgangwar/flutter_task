@@ -31,7 +31,6 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -131,10 +130,10 @@ class _MainPageState extends State<MainPage> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 61,
                           width: 61,
                           child: ElevatedButton(

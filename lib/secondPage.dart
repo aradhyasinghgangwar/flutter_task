@@ -81,7 +81,7 @@ class _secondPageState extends State<secondPage> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 61,
                           width: 61,
                           child: ElevatedButton(
@@ -100,7 +100,7 @@ class _secondPageState extends State<secondPage> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -359,13 +359,13 @@ Padding bigCards(BuildContext context, String imgloc, String college,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFA9A9A9),
                             ),
-                          )
+                          ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

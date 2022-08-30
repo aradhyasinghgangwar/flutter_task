@@ -25,7 +25,7 @@ class _thirdPageState extends State<thirdPage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         width: screenWidth * 0.9,
         child: FloatingActionButton.extended(
           shape:
